@@ -1,0 +1,364 @@
+import { useState } from 'react';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
+import { Link } from 'react-router-dom';
+import project1 from '@/assets/project-1.jpg';
+import project2 from '@/assets/project-2.jpg';
+import project3 from '@/assets/project-3.jpg';
+import project4 from '@/assets/project-4.jpg';
+import project5 from '@/assets/project-5.jpg';
+import project6 from '@/assets/project-6.jpg';
+import project7 from '@/assets/project-7.jpg';
+import project8 from '@/assets/project-8.jpg';
+import project9 from '@/assets/project-9.jpg';
+import project10 from '@/assets/project-10.jpg';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { X } from 'lucide-react';
+
+const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+
+  const projects = [
+    {
+      id: 1, title: 'Modern Serenity', category: 'Residential', location: 'Coimbatore', year: '2024',
+      description: 'Minimalist bedroom retreat featuring scandinavian aesthetics, natural materials, and carefully curated lighting to create a tranquil sleeping sanctuary.',
+      image: project1, additionalImages: [project1, project2, project3],
+      caseStudy: {
+        challenge: 'The clients desired a peaceful bedroom sanctuary but faced significant challenges with limited natural light from small north-facing windows and inadequate storage solutions for their extensive wardrobe. The existing space felt cramped and cluttered, with poor circulation and no sense of calm. Budget constraints required creative solutions rather than expensive structural changes.',
+        solution: 'We implemented a comprehensive design strategy starting with a pale neutral color palette of soft whites and warm beiges to maximize light reflection. Custom floor-to-ceiling built-in wardrobes in light oak provided ample storage while maintaining visual lightness. We enlarged the windows with planning approval and installed sheer linen curtains for privacy while allowing maximum natural light. A carefully planned lighting scheme with dimmabl LEDs, wall sconces, and hidden cove lighting created ambient flexibility. The addition of natural textures through a jute rug, linen bedding, and tactile cushions brought warmth to the minimal aesthetic.',
+        outcome: 'The transformation resulted in a serene, airy sanctuary that exceeded client expectations. Natural light now floods the space throughout the day, while the intelligent layered lighting provides perfect ambiance for evening relaxation. The custom storage solutions eliminated visual clutter, promoting restful sleep. Client feedback praised the thoughtful balance between minimalism and comfort, noting significantly improved sleep quality and morning mood.',
+        specs: '285 sq ft | 6 week timeline | Team: Lead Designer, Carpenter, Electrician',
+        philosophy: 'Scandinavian design principles guided our approach—functionality, simplicity, and connection to nature. Every element serves a purpose while maintaining aesthetic harmony.'
+      }
+    },
+    {
+      id: 2, title: 'Industrial Kitchen', category: 'Kitchen', location: 'Chennai', year: '2024',
+      description: 'Bold industrial-style kitchen combining matte black cabinetry, warm walnut accents, and professional-grade appliances for the discerning home chef.',
+      image: project2, additionalImages: [project2, project4, project5],
+      caseStudy: {
+        challenge: 'Passionate home chefs requested a kitchen that balanced industrial aesthetics with modern functionality and warmth. The existing galley kitchen was dated, poorly lit, and lacked sufficient workspace and storage. Plumbing and electrical limitations restricted layout options, while the clients insisted on retaining the original brick wall feature. The design needed to accommodate serious cooking while maintaining family-friendly approachability.',
+        solution: 'We designed custom matte black powder-coated steel cabinets with soft-close mechanisms and oil-rubbed bronze hardware. Rich walnut butcher block countertops provided warm contrast and excellent work surfaces. The preserved exposed brick wall became a stunning focal point, treated with clear sealant. We installed professional-grade stainless steel appliances including a 900mm gas range and integrated refrigeration. Task lighting via industrial-style pendant lights and under-cabinet LED strips ensured optimal illumination. An oversized island with waterfall walnut edges provided additional prep space plus casual seating for three.',
+        outcome: 'The kitchen now perfectly balances edgy industrial character with inviting warmth and professional functionality. Clients report the space has become the heart of their home, inspiring creative cooking while comfortable for family gatherings. The dramatic aesthetic garnered local design publication features. Cooking efficiency improved dramatically with the optimized work triangle and ample prep surfaces.',
+        specs: '320 sq ft | 8 week timeline | Custom cabinetry | Team: Designer, Contractor, Electrician, Plumber',
+        philosophy: 'Industrial design celebrates honest materials and functional beauty. We embraced raw finishes and utilitarian elements while ensuring every detail supports culinary excellence.'
+      }
+    },
+    {
+      id: 3, title: 'Tropical Zen Spa', category: 'Bathroom', location: 'Kerala', year: '2023',
+      description: 'Resort-inspired spa bathroom featuring natural bamboo, stone elements, tropical plants, and a luxurious freestanding bathtub connected to a private garden.',
+      image: project3, additionalImages: [project3, project6, project7],
+      caseStudy: {
+        challenge: 'Clients returning from Bali wanted to recreate that resort spa experience in their Kerala home. The existing bathroom was standard and uninspiring, with poor ventilation, inadequate privacy, and no connection to the adjacent unused courtyard. High humidity climate required careful material selection to prevent mold and deterioration. The space needed to transition from functional morning routine area to evening relaxation retreat.',
+        solution: 'We demolished the exterior wall, replacing it with large sliding glass doors opening to a transformed private courtyard garden. Naturally water-resistant bamboo wall paneling created authentic tropical warmth throughout. Large format stone tiles in soft gray covered floors with proper drainage slopes. The centerpiece freestanding soaking tub positions perfectly to enjoy garden views. A spacious walk-in rain shower with pebble floor and bamboo bench provides spa luxury. We integrated abundant tropical plants including monstera, ferns, and orchids, both inside and in the adjacent courtyard. Natural stone vessel sinks, teak accents, and hand-crafted brass fixtures completed the zen aesthetic.',
+        outcome: 'The transformation created an authentic private wellness sanctuary that transports users to a luxury resort. Clients report drastically reduced stress levels and enhanced quality of life. The indoor-outdoor connection and abundant greenery promote daily mindfulness. Proper ventilation and moisture-resistant materials have performed perfectly in the humid climate. The space earned recognition in tropical home design features.',
+        specs: '245 sq ft + 85 sq ft courtyard | 10 week timeline | Team: Designer, Landscape Designer, Contractor, Plumber',
+        philosophy: 'Tropical spa design emphasizes harmony between interior and nature, using honest natural materials and biophilic principles to create restorative environments that nourish the senses.'
+      }
+    },
+    {
+      id: 4, title: 'Art Deco Dining', category: 'Dining', location: 'Mumbai', year: '2023',
+      description: 'Glamorous Art Deco dining room featuring rich emerald velvet, geometric patterns, brass accents, and crystal lighting in a restored 1930s apartment.',
+      image: project4, additionalImages: [project4, project8, project9],
+      caseStudy: {
+        challenge: 'Located in a heritage 1930s Art Deco building, the clients wanted to honor the architectural period while creating a functional modern entertaining space. Original moldings and ceiling details had been damaged during previous renovations. Finding period-appropriate fixtures and furniture proved challenging. The room required updated electrical for modern lighting while preserving historical ceiling roses. Clients desired dramatic elegance suitable for formal dinner parties without feeling like a museum.',
+        solution: 'We meticulously restored original ceiling moldings and cornices using heritage craftsmen. Custom emerald green velvet floor-to-ceiling wall paneling with geometric brass inlay created stunning drama while providing acoustic softening. A restored crystal chandelier appropriate to the period became the centerpiece, supplemented by discreet LED cove lighting. We commissioned a custom dining table in walnut with brass geometric inlay, surrounded by sumptuous emerald velvet dining chairs with brass nail head trim. Geometric carpet, mirrored bar cabinet, and carefully selected Art Deco artwork completed the immersive period experience.',
+        outcome: 'The dining room now celebrates authentic 1930s glamour while functioning beautifully for contemporary entertaining. Guests consistently express amazement at the dramatic transformation and period authenticity. The clients regularly host dinner parties, with the room providing the perfect stage for memorable evenings. The respectful restoration approach was praised by the building heritage committee. The space successfully balances museum-quality period detail with livable modern comfort.',
+        specs: '380 sq ft | 12 week timeline | Custom furniture & millwork | Heritage restoration | Team: Designer, Heritage Craftsmen, Upholsterer',
+        philosophy: 'Art Deco embodies glamorous optimism through geometric forms, luxurious materials, and bold colors. Authentic period design requires deep research, quality craftsmanship, and respect for historical context.'
+      }
+    },
+    {
+      id: 5, title: 'Coastal Office', category: 'Office', location: 'Goa', year: '2023',
+      description: 'Mediterranean-inspired home office with whitewashed walls, blue accents, natural textures, and panoramic ocean views designed for focused creativity.',
+      image: project5, additionalImages: [project5, project1, project10],
+      caseStudy: {
+        challenge: 'A writer relocating to coastal Goa needed a home office that maximized stunning ocean views while providing distraction-free focus for concentrated writing sessions. The space suffered from harsh glare, poor acoustic isolation from household noise, and inadequate storage for extensive book collection. The tropical coastal climate required furniture and finishes resistant to humidity and salt air. The design needed to inspire creativity while supporting long working hours ergonomically.',
+        solution: 'We positioned a custom solid teak desk perpendicular to the windowed wall, allowing ocean views while avoiding screen glare. Floor-to-ceiling built-in bookshelves in whitewashed reclaimed wood provided ample storage while referencing coastal Mediterranean architecture. The color palette of crisp whites, navy blues, and natural rope accents evoked seaside tranquility. Sheer white linen curtains filter harsh sunlight while maintaining views. We specified commercial-grade acoustic treatments hidden within decorative wall panels to reduce household noise intrusion. An ergonomic task chair, adjustable lighting, and carefully planned cable management supported long productive sessions.',
+        outcome: 'The writer reports this is the most inspiring and productive workspace they have experienced. The ocean views provide restorative micro-breaks without distraction, while acoustic treatments ensure focused concentration. Book sales and productivity increased measurably. The Mediterranean aesthetic creates daily vacation-like mood while being thoroughly practical. Humidity-resistant materials have performed perfectly. The space regularly features in remote work lifestyle articles.',
+        specs: '190 sq ft | 5 week timeline | Custom built-ins | Team: Designer, Carpenter, Acoustics Consultant',
+        philosophy: 'Coastal Mediterranean design celebrates light, natural materials, and connection to sea views. Effective home offices require balancing inspiration with ergonomics, view access with glare control, and aesthetics with acoustics.'
+      }
+    },
+    {
+      id: 6, title: 'Japanese Living', category: 'Living Room', location: 'Bangalore', year: '2024',
+      description: 'Minimalist living room inspired by Japanese wabi-sabi philosophy, featuring low-profile furniture, tatami aesthetics, natural materials, and contemplative simplicity.',
+      image: project6, additionalImages: [project6, project2, project4],
+      caseStudy: {
+        challenge: 'After experiencing Japanese culture firsthand, clients wanted an authentic zen living space that promoted mindfulness and reduced visual clutter in their busy urban lives. The existing room felt chaotic with accumulated furniture and possessions. Indian living patterns including floor-sitting and shoe removal needed accommodation. The challenge was creating genuine Japanese aesthetics without cultural appropriation or theme park feeling, while remaining functional for contemporary Indian lifestyle including TV viewing and guest entertainment.',
+        solution: 'We embraced authentic Japanese design principles rather than superficial decoration. Custom low-profile furniture including a tatami-height sofa and floor cushions encouraged natural floor-sitting postures. Real tatami mat flooring in the seating area provided authentic texture and subtle fragrance. Shoji-inspired sliding screens in translucent paper and wood frames created flexible spatial division and diffused lighting. A tokonoma alcove showcased rotating seasonal elements and functioned as mindful focal point. Natural materials throughout including raw wood, stone, paper, and linen celebrated wabi-sabi imperfection. Concealed storage eliminated visual clutter. Integrated technology including hidden TV and speakers maintained modern functionality within minimal aesthetic.',
+        outcome: 'The living room transformation profoundly impacted the family lifestyle and stress levels. The uncluttered minimal environment promotes daily mindfulness and calm. The flexible low furniture accommodates both traditional floor-sitting and modern lounging. Guests consistently comment on the peaceful atmosphere. The authentic material palette ages beautifully, embracing wabi-sabi concepts. The space earned interior design awards for cultural sensitivity and authentic execution.',
+        specs: '425 sq ft | 9 week timeline | Custom furniture | Imported tatami | Team: Designer, Japanese Craftsmen Collaboration, Carpenter',
+        philosophy: 'Japanese design philosophy emphasizes simplicity, natural materials, respect for craftsmanship, and space for contemplation. Wabi-sabi celebrates imperfection and impermanence as sources of beauty.'
+      }
+    },
+    {
+      id: 7, title: 'Farmhouse Entry', category: 'Entryway', location: 'Coonoor', year: '2023',
+      description: 'Rustic farmhouse entryway with reclaimed architectural elements, terracotta tones, vintage pieces, and warm welcoming character for a country estate.',
+      image: project7, additionalImages: [project7, project3, project5],
+      caseStudy: {
+        challenge: `A newly constructed farmhouse estate lacked soul and felt uncomfortably new despite quality construction. Clients wanted an entryway that suggested generations of family history and welcomed guests with immediate warmth. The challenge involved sourcing authentic reclaimed architectural elements, creating weathered patinas on new construction, and establishing instant character. Functional needs included robust mudroom capabilities for rural living while maintaining aesthetic refinement.`,
+        solution: `We sourced spectacular reclaimed teak ceiling beams from demolished colonial buildings, along with antique carved doors repurposed as decorative wall features. Custom built-in seating with vintage-inspired cushions provided practical boot removal areas with hidden storage below. A palette of warm terracotta, cream, and weathered wood created earthy farmhouse warmth. We carefully distressed new plaster walls to suggest aged character. Antique brass hooks, vintage mirrors, and carefully selected flea market treasures added authentic layers of history. Wide-plank reclaimed wood flooring established immediate heritage feeling. Practical elements including boot trays, umbrella stands, and coat storage integrated seamlessly.`,
+        outcome: `First-time visitors consistently express disbelief that this is new construction, convinced they're entering a generations-old family estate. The entryway immediately establishes welcoming warmth and sets the tone for the entire home. The reclaimed elements provide genuine historical connection while serving practical rural lifestyle needs. Clients report the space perfectly captures their vision of authentic farmhouse living. The entry earned recognition in heritage home features despite being entirely new construction.`,
+        specs: '310 sq ft | 7 week timeline | Reclaimed materials sourcing | Antique integration | Team: Designer, Antique Specialist, Carpenter',
+        philosophy: 'Farmhouse design celebrates honest materials, handcrafted imperfection, and layers of accumulated history. Authenticity requires careful sourcing, craftsmanship respect, and understanding how spaces age gracefully.'
+      }
+    },
+    {
+      id: 8, title: 'Futuristic Penthouse', category: 'Luxury', location: 'Hyderabad', year: '2024',
+      description: 'Ultra-modern smart penthouse featuring integrated LED lighting, automated systems, sleek minimalist finishes, and panoramic city views for tech enthusiasts.',
+      image: project8, additionalImages: [project8, project9, project10],
+      caseStudy: {
+        challenge: 'Tech entrepreneur clients wanted a showcase smart home demonstrating cutting-edge automation while maintaining sophisticated aesthetic rather than gadget showroom feeling. The penthouse required extensive technology integration including lighting, climate, entertainment, and security systems—all invisibly integrated. Panoramic windows created glare challenges for multiple TV viewing areas. The clients desired impressive technology demonstration capability for business entertaining while maintaining comfortable daily livability.',
+        solution: 'We designed comprehensive smart home integration with Control4 system managing lighting, climate, entertainment, shades, and security through seamless interfaces. Custom LED cove lighting throughout provides infinite color possibilities controlled by scene programming—from focused work lighting to entertaining ambiance. Motorized blackout shades solve glare issues while preserving city views. Entertainment systems integrate into minimalist millwork with hidden screens and speakers. High-gloss white lacquer and back-painted glass surfaces reflect LED effects while maintaining clean aesthetic. We specified commercial-grade network infrastructure supporting all systems. Thoughtful programming ensures technology enhances rather than dominates daily experience.',
+        outcome: 'The penthouse successfully demonstrates smart home potential while remaining elegantly livable. Clients effortlessly entertain with impressive automated scenes while daily routines benefit from intelligent programming. The invisible technology integration maintains minimal aesthetic rather than cluttered with visible devices. Energy efficiency improved significantly through intelligent climate and lighting management. The space regularly appears in smart home technology features and provides client business value through demonstration capabilities.',
+        specs: '1850 sq ft | 14 week timeline | Comprehensive automation | Custom millwork | Team: Designer, Technology Consultant, Automation Programmer, Electrician',
+        philosophy: 'Sophisticated smart home design requires technology serving human needs invisibly. The best automation enhances lifestyle without requiring constant interaction or disrupting refined aesthetics.'
+      }
+    },
+    {
+      id: 9, title: 'Bohemian Lounge', category: 'Lounge', location: 'Pondicherry', year: '2023',
+      description: 'Eclectic bohemian lounge celebrating global textiles, collected art, vibrant colors, layered patterns, and creative self-expression for an artistic couple.',
+      image: project9, additionalImages: [project9, project1, project6],
+      caseStudy: {
+        challenge: `Artistic clients with extensive travel collections wanted cohesive design celebrating their eclectic global treasures without creating visual chaos. The space contained wonderful individual pieces but lacked coherent organization or color story. Mixing multiple pattern scales, color intensities, and cultural styles required sophisticated curation to avoid overwhelming clutter. The design needed to showcase their personality and collections while remaining livable rather than museum-like.`,
+        solution: `We established a foundation color palette anchoring the eclectic collection: deep jewel tones of teal, ruby, and amber against warm neutral walls. This provided structure for layering diverse textiles and art. Strategic gallery wall arrangements showcased art collections with curatorial intention. We mixed vintage Moroccan rugs, Indian block print cushions, Mexican serapes, and Turkish kilims through careful color coordination. Flexible seating including floor cushions, poufs, and low sofas encouraged casual gathering. Layered lighting via table lamps, floor lamps, and string lights created intimate ambiance. Open shelving displayed ceramics, books, and small treasures with breathing space between items.`,
+        outcome: `The lounge now perfectly expresses the clients' creative spirits and global experiences with cohesive visual harmony. Friends gather regularly, drawn by the space's welcoming creative energy. The curated collection approach allows rotating new acquisitions without chaos. The room appeared in bohemian style features and inspired similar clients. Most importantly, the clients feel their space authentically represents their identities and celebrates their collections with pride rather than apology.`,
+        specs: '390 sq ft | 6 week timeline | Collection curation | Custom gallery walls | Team: Designer, Art Consultant',
+        philosophy: `Bohemian design celebrates personal expression, global influences, and creative layering. Successful eclecticism requires foundational color discipline, intentional curation, and respecting each element's contribution to the whole.`
+      }
+    },
+    {
+      id: 10, title: 'Victorian Library', category: 'Library', location: 'Kolkata', year: '2024',
+      description: 'Classic Victorian library featuring floor-to-ceiling mahogany bookshelves, rolling ladders, leather seating, and climate control for a rare book collection.',
+      image: project10, additionalImages: [project10, project7, project8],
+      caseStudy: {
+        challenge: 'A serious bibliophile with 5000+ volume collection including rare first editions needed proper library accommodating the collection with appropriate conservation conditions. The room required extensive custom millwork, climate control for book preservation, adequate seating and reading light, plus achieving authentic Victorian character in a contemporary building. Building restrictions limited structural modifications. The design needed to balance museum-quality book conservation with comfortable daily reading use.',
+        solution: 'We designed floor-to-ceiling mahogany bookshelves with traditional router profiles and adjustable shelving accommodating various book sizes. An authentic rolling brass library ladder provides access to upper shelves. Climate control system maintains optimal temperature and humidity with discreet monitoring. Deep green walls and rich mahogany woodwork establish Victorian authenticity. Tufted leather Chesterfield chairs and matching ottoman provide luxurious reading comfort. Adjustable brass reading lamps at each chair plus gallery lighting along shelves ensure proper illumination without UV damage to books. A handsome library table provides research workspace. Oriental carpet and velvet drapes complete the classic atmosphere.',
+        outcome: 'The library beautifully balances serious book conservation with inviting reading comfort. The climate control system successfully preserves the valuable collection while remaining whisper-quiet. The client spends numerous hours daily in their perfect reading sanctuary, reporting significant increase in reading completion. The space properly showcases and preserves an impressive collection while encouraging active use rather than static display. The library earned features in book collector publications.',
+        specs: '485 sq ft | 16 week timeline | Custom mahogany millwork | Climate control | Team: Designer, Millwork Specialist, Climate Engineer, Book Conservation Consultant',
+        philosophy: 'Library design honors the written word through proper conservation conditions, accessible organization, comfortable reading environments, and aesthetic celebration of books as treasured objects worthy of architectural respect.'
+      }
+    },
+  ];
+
+  return (
+    <div className="min-h-screen">
+      <Navigation />
+      <section className="pt-24 md:pt-32 pb-12 px-4 md:px-6 lg:px-12 max-w-7xl mx-auto">
+        <div className="text-center mb-12 animate-fade-in-up opacity-0">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4">Our Projects</h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">Curated selection showcasing timeless design.</p>
+        </div>
+      </section>
+      <section className="pb-16 md:pb-24 px-4 md:px-6 lg:px-12 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {projects.map((project) => (
+            <div key={project.id} className="group cursor-pointer hover-lift" onClick={() => setSelectedProject(project)}>
+              <div className="aspect-[3/4] overflow-hidden mb-4 image-zoom-container">
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover image-zoom" />
+              </div>
+              <div className="px-2">
+                <p className="text-xs tracking-widest uppercase text-muted-foreground mb-2">{project.category}</p>
+                <h3 className="text-lg md:text-xl font-serif font-medium mb-1 group-hover:text-foreground/70 transition-colors">{project.title}</h3>
+                <p className="text-sm text-muted-foreground">{project.year}</p>
+                import {useState} from 'react';
+                import Navigation from '@/components/Navigation';
+                import Footer from '@/components/Footer';
+                import {Link} from 'react-router-dom';
+                import project1 from '@/assets/project-1.jpg';
+                import project2 from '@/assets/project-2.jpg';
+                import project3 from '@/assets/project-3.jpg';
+                import project4 from '@/assets/project-4.jpg';
+                import project5 from '@/assets/project-5.jpg';
+                import project6 from '@/assets/project-6.jpg';
+                import project7 from '@/assets/project-7.jpg';
+                import project8 from '@/assets/project-8.jpg';
+                import project9 from '@/assets/project-9.jpg';
+                import project10 from '@/assets/project-10.jpg';
+                import {Dialog, DialogContent} from '@/components/ui/dialog';
+                import {X} from 'lucide-react';
+
+const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+
+                  const projects = [
+                  {
+                    id: 1, title: 'Modern Serenity', category: 'Residential', location: 'Coimbatore', year: '2024',
+                  description: 'Minimalist bedroom retreat featuring scandinavian aesthetics, natural materials, and carefully curated lighting to create a tranquil sleeping sanctuary.',
+                  image: project1, additionalImages: [project1, project2, project3],
+                  caseStudy: {
+                    challenge: 'The clients desired a peaceful bedroom sanctuary but faced significant challenges with limited natural light from small north-facing windows and inadequate storage solutions for their extensive wardrobe. The existing space felt cramped and cluttered, with poor circulation and no sense of calm. Budget constraints required creative solutions rather than expensive structural changes.',
+                  solution: 'We implemented a comprehensive design strategy starting with a pale neutral color palette of soft whites and warm beiges to maximize light reflection. Custom floor-to-ceiling built-in wardrobes in light oak provided ample storage while maintaining visual lightness. We enlarged the windows with planning approval and installed sheer linen curtains for privacy while allowing maximum natural light. A carefully planned lighting scheme with dimmabl LEDs, wall sconces, and hidden cove lighting created ambient flexibility. The addition of natural textures through a jute rug, linen bedding, and tactile cushions brought warmth to the minimal aesthetic.',
+                  outcome: 'The transformation resulted in a serene, airy sanctuary that exceeded client expectations. Natural light now floods the space throughout the day, while the intelligent layered lighting provides perfect ambiance for evening relaxation. The custom storage solutions eliminated visual clutter, promoting restful sleep. Client feedback praised the thoughtful balance between minimalism and comfort, noting significantly improved sleep quality and morning mood.',
+                  specs: '285 sq ft | 6 week timeline | Team: Lead Designer, Carpenter, Electrician',
+                  philosophy: 'Scandinavian design principles guided our approach—functionality, simplicity, and connection to nature. Every element serves a purpose while maintaining aesthetic harmony.'
+      }
+    },
+                  {
+                    id: 2, title: 'Industrial Kitchen', category: 'Kitchen', location: 'Chennai', year: '2024',
+                  description: 'Bold industrial-style kitchen combining matte black cabinetry, warm walnut accents, and professional-grade appliances for the discerning home chef.',
+                  image: project2, additionalImages: [project2, project4, project5],
+                  caseStudy: {
+                    challenge: 'Passionate home chefs requested a kitchen that balanced industrial aesthetics with modern functionality and warmth. The existing galley kitchen was dated, poorly lit, and lacked sufficient workspace and storage. Plumbing and electrical limitations restricted layout options, while the clients insisted on retaining the original brick wall feature. The design needed to accommodate serious cooking while maintaining family-friendly approachability.',
+                  solution: 'We designed custom matte black powder-coated steel cabinets with soft-close mechanisms and oil-rubbed bronze hardware. Rich walnut butcher block countertops provided warm contrast and excellent work surfaces. The preserved exposed brick wall became a stunning focal point, treated with clear sealant. We installed professional-grade stainless steel appliances including a 900mm gas range and integrated refrigeration. Task lighting via industrial-style pendant lights and under-cabinet LED strips ensured optimal illumination. An oversized island with waterfall walnut edges provided additional prep space plus casual seating for three.',
+                  outcome: 'The kitchen now perfectly balances edgy industrial character with inviting warmth and professional functionality. Clients report the space has become the heart of their home, inspiring creative cooking while comfortable for family gatherings. The dramatic aesthetic garnered local design publication features. Cooking efficiency improved dramatically with the optimized work triangle and ample prep surfaces.',
+                  specs: '320 sq ft | 8 week timeline | Custom cabinetry | Team: Designer, Contractor, Electrician, Plumber',
+                  philosophy: 'Industrial design celebrates honest materials and functional beauty. We embraced raw finishes and utilitarian elements while ensuring every detail supports culinary excellence.'
+      }
+    },
+                  {
+                    id: 3, title: 'Tropical Zen Spa', category: 'Bathroom', location: 'Kerala', year: '2023',
+                  description: 'Resort-inspired spa bathroom featuring natural bamboo, stone elements, tropical plants, and a luxurious freestanding bathtub connected to a private garden.',
+                  image: project3, additionalImages: [project3, project6, project7],
+                  caseStudy: {
+                    challenge: 'Clients returning from Bali wanted to recreate that resort spa experience in their Kerala home. The existing bathroom was standard and uninspiring, with poor ventilation, inadequate privacy, and no connection to the adjacent unused courtyard. High humidity climate required careful material selection to prevent mold and deterioration. The space needed to transition from functional morning routine area to evening relaxation retreat.',
+                  solution: 'We demolished the exterior wall, replacing it with large sliding glass doors opening to a transformed private courtyard garden. Naturally water-resistant bamboo wall paneling created authentic tropical warmth throughout. Large format stone tiles in soft gray covered floors with proper drainage slopes. The centerpiece freestanding soaking tub positions perfectly to enjoy garden views. A spacious walk-in rain shower with pebble floor and bamboo bench provides spa luxury. We integrated abundant tropical plants including monstera, ferns, and orchids, both inside and in the adjacent courtyard. Natural stone vessel sinks, teak accents, and hand-crafted brass fixtures completed the zen aesthetic.',
+                  outcome: 'The transformation created an authentic private wellness sanctuary that transports users to a luxury resort. Clients report drastically reduced stress levels and enhanced quality of life. The indoor-outdoor connection and abundant greenery promote daily mindfulness. Proper ventilation and moisture-resistant materials have performed perfectly in the humid climate. The space earned recognition in tropical home design features.',
+                  specs: '245 sq ft + 85 sq ft courtyard | 10 week timeline | Team: Designer, Landscape Designer, Contractor, Plumber',
+                  philosophy: 'Tropical spa design emphasizes harmony between interior and nature, using honest natural materials and biophilic principles to create restorative environments that nourish the senses.'
+      }
+    },
+                  {
+                    id: 4, title: 'Art Deco Dining', category: 'Dining', location: 'Mumbai', year: '2023',
+                  description: 'Glamorous Art Deco dining room featuring rich emerald velvet, geometric patterns, brass accents, and crystal lighting in a restored 1930s apartment.',
+                  image: project4, additionalImages: [project4, project8, project9],
+                  caseStudy: {
+                    challenge: 'Located in a heritage 1930s Art Deco building, the clients wanted to honor the architectural period while creating a functional modern entertaining space. Original moldings and ceiling details had been damaged during previous renovations. Finding period-appropriate fixtures and furniture proved challenging. The room required updated electrical for modern lighting while preserving historical ceiling roses. Clients desired dramatic elegance suitable for formal dinner parties without feeling like a museum.',
+                  solution: 'We meticulously restored original ceiling moldings and cornices using heritage craftsmen. Custom emerald green velvet floor-to-ceiling wall paneling with geometric brass inlay created stunning drama while providing acoustic softening. A restored crystal chandelier appropriate to the period became the centerpiece, supplemented by discreet LED cove lighting. We commissioned a custom dining table in walnut with brass geometric inlay, surrounded by sumptuous emerald velvet dining chairs with brass nail head trim. Geometric carpet, mirrored bar cabinet, and carefully selected Art Deco artwork completed the immersive period experience.',
+                  outcome: 'The dining room now celebrates authentic 1930s glamour while functioning beautifully for contemporary entertaining. Guests consistently express amazement at the dramatic transformation and period authenticity. The clients regularly host dinner parties, with the room providing the perfect stage for memorable evenings. The respectful restoration approach was praised by the building heritage committee. The space successfully balances museum-quality period detail with livable modern comfort.',
+                  specs: '380 sq ft | 12 week timeline | Custom furniture & millwork | Heritage restoration | Team: Designer, Heritage Craftsmen, Upholsterer',
+                  philosophy: 'Art Deco embodies glamorous optimism through geometric forms, luxurious materials, and bold colors. Authentic period design requires deep research, quality craftsmanship, and respect for historical context.'
+      }
+    },
+                  {
+                    id: 5, title: 'Coastal Office', category: 'Office', location: 'Goa', year: '2023',
+                  description: 'Mediterranean-inspired home office with whitewashed walls, blue accents, natural textures, and panoramic ocean views designed for focused creativity.',
+                  image: project5, additionalImages: [project5, project1, project10],
+                  caseStudy: {
+                    challenge: 'A writer relocating to coastal Goa needed a home office that maximized stunning ocean views while providing distraction-free focus for concentrated writing sessions. The space suffered from harsh glare, poor acoustic isolation from household noise, and inadequate storage for extensive book collection. The tropical coastal climate required furniture and finishes resistant to humidity and salt air. The design needed to inspire creativity while supporting long working hours ergonomically.',
+                  solution: 'We positioned a custom solid teak desk perpendicular to the windowed wall, allowing ocean views while avoiding screen glare. Floor-to-ceiling built-in bookshelves in whitewashed reclaimed wood provided ample storage while referencing coastal Mediterranean architecture. The color palette of crisp whites, navy blues, and natural rope accents evoked seaside tranquility. Sheer white linen curtains filter harsh sunlight while maintaining views. We specified commercial-grade acoustic treatments hidden within decorative wall panels to reduce household noise intrusion. An ergonomic task chair, adjustable lighting, and carefully planned cable management supported long productive sessions.',
+                  outcome: 'The writer reports this is the most inspiring and productive workspace they have experienced. The ocean views provide restorative micro-breaks without distraction, while acoustic treatments ensure focused concentration. Book sales and productivity increased measurably. The Mediterranean aesthetic creates daily vacation-like mood while being thoroughly practical. Humidity-resistant materials have performed perfectly. The space regularly features in remote work lifestyle articles.',
+                  specs: '190 sq ft | 5 week timeline | Custom built-ins | Team: Designer, Carpenter, Acoustics Consultant',
+                  philosophy: 'Coastal Mediterranean design celebrates light, natural materials, and connection to sea views. Effective home offices require balancing inspiration with ergonomics, view access with glare control, and aesthetics with acoustics.'
+      }
+    },
+                  {
+                    id: 6, title: 'Japanese Living', category: 'Living Room', location: 'Bangalore', year: '2024',
+                  description: 'Minimalist living room inspired by Japanese wabi-sabi philosophy, featuring low-profile furniture, tatami aesthetics, natural materials, and contemplative simplicity.',
+                  image: project6, additionalImages: [project6, project2, project4],
+                  caseStudy: {
+                    challenge: 'After experiencing Japanese culture firsthand, clients wanted an authentic zen living space that promoted mindfulness and reduced visual clutter in their busy urban lives. The existing room felt chaotic with accumulated furniture and possessions. Indian living patterns including floor-sitting and shoe removal needed accommodation. The challenge was creating genuine Japanese aesthetics without cultural appropriation or theme park feeling, while remaining functional for contemporary Indian lifestyle including TV viewing and guest entertainment.',
+                  solution: 'We embraced authentic Japanese design principles rather than superficial decoration. Custom low-profile furniture including a tatami-height sofa and floor cushions encouraged natural floor-sitting postures. Real tatami mat flooring in the seating area provided authentic texture and subtle fragrance. Shoji-inspired sliding screens in translucent paper and wood frames created flexible spatial division and diffused lighting. A tokonoma alcove showcased rotating seasonal elements and functioned as mindful focal point. Natural materials throughout including raw wood, stone, paper, and linen celebrated wabi-sabi imperfection. Concealed storage eliminated visual clutter. Integrated technology including hidden TV and speakers maintained modern functionality within minimal aesthetic.',
+                  outcome: 'The living room transformation profoundly impacted the family lifestyle and stress levels. The uncluttered minimal environment promotes daily mindfulness and calm. The flexible low furniture accommodates both traditional floor-sitting and modern lounging. Guests consistently comment on the peaceful atmosphere. The authentic material palette ages beautifully, embracing wabi-sabi concepts. The space earned interior design awards for cultural sensitivity and authentic execution.',
+                  specs: '425 sq ft | 9 week timeline | Custom furniture | Imported tatami | Team: Designer, Japanese Craftsmen Collaboration, Carpenter',
+                  philosophy: 'Japanese design philosophy emphasizes simplicity, natural materials, respect for craftsmanship, and space for contemplation. Wabi-sabi celebrates imperfection and impermanence as sources of beauty.'
+      }
+    },
+                  {
+                    id: 7, title: 'Farmhouse Entry', category: 'Entryway', location: 'Coonoor', year: '2023',
+                  description: 'Rustic farmhouse entryway with reclaimed architectural elements, terracotta tones, vintage pieces, and warm welcoming character for a country estate.',
+                  image: project7, additionalImages: [project7, project3, project5],
+                  caseStudy: {
+                    challenge: `A newly constructed farmhouse estate lacked soul and felt uncomfortably new despite quality construction. Clients wanted an entryway that suggested generations of family history and welcomed guests with immediate warmth. The challenge involved sourcing authentic reclaimed architectural elements, creating weathered patinas on new construction, and establishing instant character. Functional needs included robust mudroom capabilities for rural living while maintaining aesthetic refinement.`,
+                  solution: `We sourced spectacular reclaimed teak ceiling beams from demolished colonial buildings, along with antique carved doors repurposed as decorative wall features. Custom built-in seating with vintage-inspired cushions provided practical boot removal areas with hidden storage below. A palette of warm terracotta, cream, and weathered wood created earthy farmhouse warmth. We carefully distressed new plaster walls to suggest aged character. Antique brass hooks, vintage mirrors, and carefully selected flea market treasures added authentic layers of history. Wide-plank reclaimed wood flooring established immediate heritage feeling. Practical elements including boot trays, umbrella stands, and coat storage integrated seamlessly.`,
+                  outcome: `First-time visitors consistently express disbelief that this is new construction, convinced they're entering a generations-old family estate. The entryway immediately establishes welcoming warmth and sets the tone for the entire home. The reclaimed elements provide genuine historical connection while serving practical rural lifestyle needs. Clients report the space perfectly captures their vision of authentic farmhouse living. The entry earned recognition in heritage home features despite being entirely new construction.`,
+                  specs: '310 sq ft | 7 week timeline | Reclaimed materials sourcing | Antique integration | Team: Designer, Antique Specialist, Carpenter',
+                  philosophy: 'Farmhouse design celebrates honest materials, handcrafted imperfection, and layers of accumulated history. Authenticity requires careful sourcing, craftsmanship respect, and understanding how spaces age gracefully.'
+      }
+    },
+                  {
+                    id: 8, title: 'Futuristic Penthouse', category: 'Luxury', location: 'Hyderabad', year: '2024',
+                  description: 'Ultra-modern smart penthouse featuring integrated LED lighting, automated systems, sleek minimalist finishes, and panoramic city views for tech enthusiasts.',
+                  image: project8, additionalImages: [project8, project9, project10],
+                  caseStudy: {
+                    challenge: 'Tech entrepreneur clients wanted a showcase smart home demonstrating cutting-edge automation while maintaining sophisticated aesthetic rather than gadget showroom feeling. The penthouse required extensive technology integration including lighting, climate, entertainment, and security systems—all invisibly integrated. Panoramic windows created glare challenges for multiple TV viewing areas. The clients desired impressive technology demonstration capability for business entertaining while maintaining comfortable daily livability.',
+                  solution: 'We designed comprehensive smart home integration with Control4 system managing lighting, climate, entertainment, shades, and security through seamless interfaces. Custom LED cove lighting throughout provides infinite color possibilities controlled by scene programming—from focused work lighting to entertaining ambiance. Motorized blackout shades solve glare issues while preserving city views. Entertainment systems integrate into minimalist millwork with hidden screens and speakers. High-gloss white lacquer and back-painted glass surfaces reflect LED effects while maintaining clean aesthetic. We specified commercial-grade network infrastructure supporting all systems. Thoughtful programming ensures technology enhances rather than dominates daily experience.',
+                  outcome: 'The penthouse successfully demonstrates smart home potential while remaining elegantly livable. Clients effortlessly entertain with impressive automated scenes while daily routines benefit from intelligent programming. The invisible technology integration maintains minimal aesthetic rather than cluttered with visible devices. Energy efficiency improved significantly through intelligent climate and lighting management. The space regularly appears in smart home technology features and provides client business value through demonstration capabilities.',
+                  specs: '1850 sq ft | 14 week timeline | Comprehensive automation | Custom millwork | Team: Designer, Technology Consultant, Automation Programmer, Electrician',
+                  philosophy: 'Sophisticated smart home design requires technology serving human needs invisibly. The best automation enhances lifestyle without requiring constant interaction or disrupting refined aesthetics.'
+      }
+    },
+                  {
+                    id: 9, title: 'Bohemian Lounge', category: 'Lounge', location: 'Pondicherry', year: '2023',
+                  description: 'Eclectic bohemian lounge celebrating global textiles, collected art, vibrant colors, layered patterns, and creative self-expression for an artistic couple.',
+                  image: project9, additionalImages: [project9, project1, project6],
+                  caseStudy: {
+                    challenge: `Artistic clients with extensive travel collections wanted cohesive design celebrating their eclectic global treasures without creating visual chaos. The space contained wonderful individual pieces but lacked coherent organization or color story. Mixing multiple pattern scales, color intensities, and cultural styles required sophisticated curation to avoid overwhelming clutter. The design needed to showcase their personality and collections while remaining livable rather than museum-like.`,
+                  solution: `We established a foundation color palette anchoring the eclectic collection: deep jewel tones of teal, ruby, and amber against warm neutral walls. This provided structure for layering diverse textiles and art. Strategic gallery wall arrangements showcased art collections with curatorial intention. We mixed vintage Moroccan rugs, Indian block print cushions, Mexican serapes, and Turkish kilims through careful color coordination. Flexible seating including floor cushions, poufs, and low sofas encouraged casual gathering. Layered lighting via table lamps, floor lamps, and string lights created intimate ambiance. Open shelving displayed ceramics, books, and small treasures with breathing space between items.`,
+                  outcome: `The lounge now perfectly expresses the clients' creative spirits and global experiences with cohesive visual harmony. Friends gather regularly, drawn by the space's welcoming creative energy. The curated collection approach allows rotating new acquisitions without chaos. The room appeared in bohemian style features and inspired similar clients. Most importantly, the clients feel their space authentically represents their identities and celebrates their collections with pride rather than apology.`,
+                  specs: '390 sq ft | 6 week timeline | Collection curation | Custom gallery walls | Team: Designer, Art Consultant',
+                  philosophy: `Bohemian design celebrates personal expression, global influences, and creative layering. Successful eclecticism requires foundational color discipline, intentional curation, and respecting each element's contribution to the whole.`
+      }
+    },
+                  {
+                    id: 10, title: 'Victorian Library', category: 'Library', location: 'Kolkata', year: '2024',
+                  description: 'Classic Victorian library featuring floor-to-ceiling mahogany bookshelves, rolling ladders, leather seating, and climate control for a rare book collection.',
+                  image: project10, additionalImages: [project10, project7, project8],
+                  caseStudy: {
+                    challenge: 'A serious bibliophile with 5000+ volume collection including rare first editions needed proper library accommodating the collection with appropriate conservation conditions. The room required extensive custom millwork, climate control for book preservation, adequate seating and reading light, plus achieving authentic Victorian character in a contemporary building. Building restrictions limited structural modifications. The design needed to balance museum-quality book conservation with comfortable daily reading use.',
+                  solution: 'We designed floor-to-ceiling mahogany bookshelves with traditional router profiles and adjustable shelving accommodating various book sizes. An authentic rolling brass library ladder provides access to upper shelves. Climate control system maintains optimal temperature and humidity with discreet monitoring. Deep green walls and rich mahogany woodwork establish Victorian authenticity. Tufted leather Chesterfield chairs and matching ottoman provide luxurious reading comfort. Adjustable brass reading lamps at each chair plus gallery lighting along shelves ensure proper illumination without UV damage to books. A handsome library table provides research workspace. Oriental carpet and velvet drapes complete the classic atmosphere.',
+                  outcome: 'The library beautifully balances serious book conservation with inviting reading comfort. The climate control system successfully preserves the valuable collection while remaining whisper-quiet. The client spends numerous hours daily in their perfect reading sanctuary, reporting significant increase in reading completion. The space properly showcases and preserves an impressive collection while encouraging active use rather than static display. The library earned features in book collector publications.',
+                  specs: '485 sq ft | 16 week timeline | Custom mahogany millwork | Climate control | Team: Designer, Millwork Specialist, Climate Engineer, Book Conservation Consultant',
+                  philosophy: 'Library design honors the written word through proper conservation conditions, accessible organization, comfortable reading environments, and aesthetic celebration of books as treasured objects worthy of architectural respect.'
+      }
+    },
+                  ];
+
+                  return (
+                  <div className="min-h-screen">
+                    <Navigation />
+                    <section className="pt-24 md:pt-32 pb-12 px-4 md:px-6 lg:px-12 max-w-7xl mx-auto">
+                      <div className="text-center mb-12 animate-fade-in-up opacity-0">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4">Our Projects</h1>
+                        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">Curated selection showcasing timeless design.</p>
+                      </div>
+                    </section>
+                    <section className="pb-16 md:pb-24 px-4 md:px-6 lg:px-12 max-w-7xl mx-auto">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                        {projects.map((project) => (
+                          <div key={project.id} className="group cursor-pointer hover-lift" onClick={() => setSelectedProject(project)}>
+                            <div className="aspect-[3/4] overflow-hidden mb-4 image-zoom-container">
+                              <img src={project.image} alt={project.title} className="w-full h-full object-cover image-zoom" />
+                            </div>
+                            <div className="px-2">
+                              <p className="text-xs tracking-widest uppercase text-muted-foreground mb-2">{project.category}</p>
+                              <h3 className="text-lg md:text-xl font-serif font-medium mb-1 group-hover:text-foreground/70 transition-colors">{project.title}</h3>
+                              <p className="text-sm text-muted-foreground">{project.year}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+                    <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+                      <DialogContent className="max-w-6xl max-h-[85vh] md:max-h-[90vh] overflow-y-auto bg-background p-0 m-4 md:m-0 rounded-3xl md:rounded-lg">
+                        {selectedProject && (
+                          <div>
+                            <button onClick={() => setSelectedProject(null)} className="absolute top-4 right-4 z-10 p-2 bg-background/80 hover:bg-background transition-all hover:scale-110 rounded-full"><X size={24} /></button>
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 p-4 md:p-8 lg:p-12">
+                              <div className="space-y-4 md:space-y-6">
+                                <div>
+                                  <p className="text-xs tracking-widest uppercase text-muted-foreground mb-2">{selectedProject.category}</p>
+                                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold mb-3 md:mb-4">{selectedProject.title}</h2>
+                                  <div className="flex gap-4 text-sm text-muted-foreground mb-4 md:mb-6"><span>{selectedProject.location}</span><span>•</span><span>{selectedProject.year}</span></div>
+                                </div>
+                                <p className="text-sm md:text-base lg:text-lg leading-relaxed text-muted-foreground">{selectedProject.description}</p>
+                                <div className="space-y-3 md:space-y-4 pt-4 border-t border-border">
+                                  <h3 className="text-lg md:text-xl lg:text-2xl font-serif font-semibold">Case Study</h3>
+                                  <div><h4 className="font-semibold text-xs md:text-sm uppercase text-muted-foreground mb-1 md:mb-2">Challenge</h4><p className="text-sm md:text-base text-muted-foreground">{selectedProject.caseStudy.challenge}</p></div>
+                                  <div><h4 className="font-semibold text-xs md:text-sm uppercase text-muted-foreground mb-1 md:mb-2">Solution</h4><p className="text-sm md:text-base text-muted-foreground">{selectedProject.caseStudy.solution}</p></div>
+                                  <div><h4 className="font-semibold text-xs md:text-sm uppercase text-muted-foreground mb-1 md:mb-2">Outcome</h4><p className="text-sm md:text-base text-muted-foreground">{selectedProject.caseStudy.outcome}</p></div>
+                                </div>
+                                <div className="pt-4 md:pt-6"><Link to="/contact" className="inline-block px-5 md:px-6 py-2.5 md:py-3 bg-foreground text-background text-xs md:text-sm btn-hover">Inquire About Similar Projects</Link></div>
+                              </div>
+                              <div className="space-y-3 md:space-y-4">{selectedProject.additionalImages.map((img: string, idx: number) => (<div key={idx} className="aspect-[4/3] overflow-hidden image-zoom-container rounded-lg"><img src={img} alt={`${selectedProject.title} ${idx + 1}`} className="w-full h-full object-cover image-zoom" /></div>))}</div>
+                            </div>
+                          </div>
+                        )}
+                      </DialogContent>
+                    </Dialog>
+                    <Footer />
+                  </div>
+                  );
+};
+
+                  export default Projects;

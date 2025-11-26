@@ -1,0 +1,308 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Premium Interior Design Theme - Warm Terracotta & Cream */
+    --background: 30 25% 97%;
+    /* Soft Cream #F9F6F3 */
+    --foreground: 25 15% 15%;
+    /* Deep Brown */
+
+    --card: 25 30% 92%;
+    /* Light Terracotta Tint */
+    --card-foreground: 25 15% 15%;
+
+    --popover: 30 25% 97%;
+    --popover-foreground: 25 15% 15%;
+
+    --primary: 15 65% 55%;
+    /* Rich Terracotta #C8754A */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 35% 80%;
+    /* Warm Beige #E0D0BE */
+    --secondary-foreground: 25 15% 15%;
+
+    --muted: 30 25% 88%;
+    /* Light warm gray */
+    --muted-foreground: 25 10% 40%;
+
+    --accent: 15 65% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 15 65% 55%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 30 25% 98%;
+
+    --sidebar-foreground: 25 15% 25%;
+
+    --sidebar-primary: 15 60% 45%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 30 30% 92%;
+
+    --sidebar-accent-foreground: 15 60% 45%;
+
+    --sidebar-border: 30 20% 88%;
+
+    --sidebar-ring: 15 65% 55%;
+  }
+
+  .dark {
+    --background: 25 20% 10%;
+    --foreground: 30 25% 97%;
+
+    --card: 25 18% 14%;
+    --card-foreground: 30 25% 97%;
+
+    --popover: 25 20% 10%;
+    --popover-foreground: 30 25% 97%;
+
+    --primary: 15 65% 55%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 25 15% 22%;
+    --secondary-foreground: 30 25% 97%;
+
+    --muted: 25 12% 20%;
+    --muted-foreground: 30 15% 65%;
+
+    --accent: 15 65% 55%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 25 15% 22%;
+    --input: 25 15% 22%;
+    --ring: 15 65% 55%;
+    --sidebar-background: 25 18% 12%;
+    --sidebar-foreground: 30 20% 85%;
+    --sidebar-primary: 15 65% 55%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 25 15% 20%;
+    --sidebar-accent-foreground: 30 20% 85%;
+    --sidebar-border: 25 15% 20%;
+    --sidebar-ring: 15 65% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: 'Bodoni Moda', serif;
+  }
+
+  .font-sans {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Premium animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 0.3s;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 0.5s;
+  }
+
+  /* Fast animations for mobile menu */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.15s ease-out forwards;
+  }
+
+  .animate-fade-in-fast {
+    animation: fadeIn 0.15s ease-out forwards;
+  }
+
+
+  .hover-lift {
+    @apply transition-transform duration-500 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-2;
+  }
+
+  .image-zoom-container {
+    @apply overflow-hidden;
+  }
+
+  .image-zoom {
+    @apply transition-transform duration-700 ease-out;
+  }
+
+  .image-zoom-container:hover .image-zoom {
+    @apply scale-110;
+  }
+
+  /* Enhanced Button Hover Effects */
+  .btn-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .btn-hover:hover {
+    @apply scale-105 shadow-lg;
+  }
+
+  /* Smooth Scale Hover */
+  .hover-scale {
+    @apply transition-transform duration-300 ease-out;
+  }
+
+  .hover-scale:hover {
+    @apply scale-105;
+  }
+
+  /* Glow Effect */
+  .hover-glow {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-glow:hover {
+    @apply shadow-xl;
+  }
+
+  /* Card Hover with Lift and Shadow */
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-3 shadow-2xl;
+  }
+
+  /* Hide Lovable Badge */
+  iframe[style*="position: fixed"][style*="bottom"][style*="right"] {
+    display: none !important;
+  }
+
+  /* Infinite Scroll Animation for Brand Logos */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  .animate-scroll-continuous {
+    animation: scroll 30s linear infinite;
+  }
+
+  .animate-scroll-fast {
+    animation: scroll 15s linear infinite;
+  }
+}
