@@ -14,33 +14,33 @@ const Home = () => {
 
   const testimonials = [
     {
-      name: 'Priya Sharma',
+      name: 'Meera Krishnan',
       role: 'Residential Client',
-      initial: 'P',
+      initial: 'M',
       text: 'Stoneleaf transformed our home into a sanctuary. Their attention to detail and understanding of our lifestyle created spaces that truly feel like us.',
     },
     {
-      name: 'Arjun Patel',
+      name: 'Vikram Joshi',
       role: 'Commercial Project',
-      initial: 'A',
+      initial: 'V',
       text: 'The team\'s architectural precision and creative vision exceeded our expectations. Our office now inspires productivity and creativity.',
     },
     {
-      name: 'Ananya Reddy',
+      name: 'Divya Nair',
       role: 'Renovation Project',
-      initial: 'A',
+      initial: 'D',
       text: 'From concept to completion, the process was seamless. They listened, understood, and delivered a design that enhances our daily living.',
     },
     {
-      name: 'Rohan Desai',
+      name: 'Aditya Malhotra',
       role: 'Villa Design',
-      initial: 'R',
+      initial: 'A',
       text: 'Working with Stoneleaf was an absolute pleasure. They brought our vision to life with impeccable craftsmanship and creative solutions.',
     },
     {
-      name: 'Kavya Iyer',
+      name: 'Sneha Pillai',
       role: 'Interior Redesign',
-      initial: 'K',
+      initial: 'S',
       text: 'The transformation of our space exceeded all expectations. Every detail was carefully considered, resulting in a home we absolutely love.',
     },
   ];
@@ -131,40 +131,6 @@ const Home = () => {
           ))}
         </div>
 
-        {/* Brand Logos Infinite Scroll */}
-        <div className="mt-20 overflow-hidden bg-white py-12 rounded-2xl">
-          <div className="relative">
-            <div className="flex animate-scroll-fast">
-              {/* First set of logos */}
-              <div className="flex items-center gap-20 px-12 shrink-0">
-                <img src="https://logo.clearbit.com/shopify.com" alt="Shopify" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/stripe.com" alt="Stripe" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/slack.com" alt="Slack" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/figma.com" alt="Figma" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/notion.so" alt="Notion" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/asana.com" alt="Asana" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/trello.com" alt="Trello" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/mailchimp.com" alt="Mailchimp" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/zendesk.com" alt="Zendesk" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/hubspot.com" alt="HubSpot" className="h-16 object-contain grayscale" />
-              </div>
-              {/* Duplicate set for seamless loop */}
-              <div className="flex items-center gap-20 px-12 shrink-0">
-                <img src="https://logo.clearbit.com/shopify.com" alt="Shopify" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/stripe.com" alt="Stripe" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/slack.com" alt="Slack" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/figma.com" alt="Figma" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/notion.so" alt="Notion" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/asana.com" alt="Asana" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/trello.com" alt="Trello" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/mailchimp.com" alt="Mailchimp" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/zendesk.com" alt="Zendesk" className="h-16 object-contain grayscale" />
-                <img src="https://logo.clearbit.com/hubspot.com" alt="HubSpot" className="h-16 object-contain grayscale" />
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Testimonials Section - Card Design with Clickable Carousel */}
         <div className="mt-32">
           <div className="max-w-4xl mx-auto">
@@ -201,8 +167,8 @@ const Home = () => {
                       key={index}
                       onClick={() => setActiveTestimonial(index)}
                       className={`h-2 rounded-full transition-all cursor-pointer hover:opacity-80 ${index === activeTestimonial
-                          ? 'w-8 bg-primary'
-                          : 'w-2 bg-muted-foreground/30'
+                        ? 'w-8 bg-primary'
+                        : 'w-2 bg-muted-foreground/30'
                         }`}
                       aria-label={`View testimonial ${index + 1}`}
                     />

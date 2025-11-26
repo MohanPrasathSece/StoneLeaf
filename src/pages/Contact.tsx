@@ -179,8 +179,7 @@ const Contact = () => {
                 <div>
                   <p className="text-sm text-muted-foreground mb-1 uppercase tracking-wide">Location</p>
                   <p className="text-lg font-medium">
-                    Race Course Road<br />
-                    Coimbatore, Tamil Nadu
+                    RS Puram, Coimbatore
                   </p>
                 </div>
               </div>

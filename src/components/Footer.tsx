@@ -63,8 +63,8 @@ const Footer = () => {
                 <div className="flex items-start gap-3 text-sm text-muted-foreground">
                   <MapPin size={18} className="mt-0.5 text-primary shrink-0" />
                   <span>
-                    Architecture District<br />
-                    Design Avenue
+                    RS Puram<br />
+                    Coimbatore
                   </span>
                 </div>
               </div>
