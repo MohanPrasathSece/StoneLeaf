@@ -103,12 +103,12 @@ const Footer = () => {
               <p className="text-xs text-muted-foreground mt-1">
                 Designed & Developed by{' '}
                 <a
-                  href="https://www.zyradigitals.info/"
+                  href="https://amzcoz.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary hover:underline font-medium"
                 >
-                  Zyra Digitals
+                  AmzCoz
                 </a>
               </p>
             </div>
